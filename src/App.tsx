@@ -1,10 +1,11 @@
 import { Assets as NavigationAssets } from '@react-navigation/elements';
-import { DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { createURL } from 'expo-linking';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
-import { Navigation } from './navigation';
+import { useColorScheme, View } from 'react-native';
+
+import TabNavigation from './navigation/TabNavigation';
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -25,12 +26,8 @@ export function App() {
   const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
   return (
-    <Navigation
-      theme={theme}
-      linking={linking}
-      onReady={() => {
-        SplashScreen.hideAsync();
-      }}
-    />
+  <NavigationContainer>
+    <TabNavigation />
+   </NavigationContainer>
   );
 }
