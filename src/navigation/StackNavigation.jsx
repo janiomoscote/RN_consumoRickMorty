@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Home } from './screens/Home';
 import Details from './screens/Details';
 
@@ -10,7 +11,10 @@ export default function StackNavigation() {
       <Stack.Screen
         name="CharacterList"
         component={Home}
-        options={{ title: 'Personajes' }}
+        options={{
+          title: 'Personajes',
+          headerLeft: () => <DrawerToggleButton />,
+        }}
       />
       <Stack.Screen
         name="CharacterDetail"

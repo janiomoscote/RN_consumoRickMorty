@@ -3,9 +3,10 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/
 import { Asset } from 'expo-asset';
 import { createURL } from 'expo-linking';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useColorScheme } from 'react-native';
 
-import TabNavigation from './navigation/TabNavigation';
+import DrawerNavigation from './navigation/DrawerNavigation';
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -26,8 +27,10 @@ export function App() {
   const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
 
   return (
-  <NavigationContainer>
-    <TabNavigation />
-   </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <DrawerNavigation />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
